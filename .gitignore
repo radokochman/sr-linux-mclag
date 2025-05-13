@@ -1,0 +1,4 @@
+# Containerlab runtime files
+topology/.topology.clab.yaml.bak
+topology/clab-sr-linux-mclag
+topology/configs/.*
