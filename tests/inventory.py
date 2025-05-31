@@ -4,28 +4,14 @@ from tests.models import BgpNeighbor, BgpPeerType, Interface, Subinterface
 SPINE1 = "clab-sr-linux-mclag-spine1"
 SPINE2 = "clab-sr-linux-mclag-spine2"
 
-SPINES = [
-    SPINE1,
-    SPINE2,
-]
 
 LEAF1 = "clab-sr-linux-mclag-leaf1"
 LEAF2 = "clab-sr-linux-mclag-leaf2"
 LEAF3 = "clab-sr-linux-mclag-leaf3"
 
-LEAFS = [
-    LEAF1,
-    LEAF2,
-    LEAF3,
-]
 
 CLIENT1 = "clab-sr-linux-mclag-client1"
 CLIENT2 = "clab-sr-linux-mclag-client2"
-CLIENTS = [
-    CLIENT1,
-    CLIENT2,
-]
-ALL_DEVICES = [*SPINES, *LEAFS, *CLIENTS]
 
 
 BGP_NEIGHBORS_DEFINITION = [
