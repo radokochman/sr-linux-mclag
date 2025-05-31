@@ -1,4 +1,8 @@
-# Containerlab runtime files
+# Ignore Python bytecode files
+.vscode
+__pycache__
+
+# Ignore Containerlab files
 topology/.topology.clab.yaml.bak
 topology/clab-sr-linux-mclag
 topology/configs/.*

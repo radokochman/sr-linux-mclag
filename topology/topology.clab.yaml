@@ -1,11 +1,11 @@
-# Topology documentation: https://github.com/radokochman/sr-linux-mclag
+# Topology documentation: https://wandernets.com/deploy-nokia-sr-linux-dc-with-mc-lag-in-a-seconds/
 # Authors: Lukasz Michna, Radoslaw Kochman
 # Description: The topology is designed to demonstrate the use of MLAG (Multi-Chassis Link Aggregation).
 name: sr-linux-mclag
 topology:
   kinds:
     nokia_srlinux:
-      image: ghcr.io/nokia/srlinux
+      image: ghcr.io/nokia/srlinux:24.10
   nodes:
     leaf1:
       kind: nokia_srlinux
@@ -16,7 +16,6 @@ topology:
     leaf3:
       kind: nokia_srlinux
       startup-config: configs/leaf3.cfg
-  
     spine1:
       kind: nokia_srlinux
       type: ixrd3
