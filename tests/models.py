@@ -10,7 +10,7 @@ class InterfaceBase:
 @dataclass
 class Subinterface(InterfaceBase):
     index: int
-    ip_address: str = None
+    ip_address: str
 
     def __str__(self):
         return f"{self.name}.{self.index}"
