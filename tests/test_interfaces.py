@@ -6,7 +6,7 @@ from tests.constants import (
 )
 from tests.helpers import build_path_for_interface, strip_returned_value
 from tests.inventory import INTERFACES_DEFINITION
-from tests.models import Interface
+from tests.models import Subinterface
 
 
 @pytest.mark.parametrize("device,interfaces", INTERFACES_DEFINITION)
@@ -38,9 +38,10 @@ def test_interface_oper_state_up(gnmi_client, device, interfaces):
 @pytest.mark.parametrize("device,interfaces", INTERFACES_DEFINITION)
 def test_subinterface_ipv4_address_configured(gnmi_client, device, interfaces):
     for interface in interfaces:
-        if isinstance(interface, Interface):
-            # Skip interfaces
+        if not isinstance(interface, Subinterface):
+            # Skip interfaces that are not subinterfaces
             continue
+
         if not interface.ip_address:
             # Skip subinterfaces without IP address
             continue
