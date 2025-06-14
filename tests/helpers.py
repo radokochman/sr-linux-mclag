@@ -3,7 +3,7 @@ from tests.models import Interface, Subinterface
 
 def strip_returned_value(result: dict) -> str:
     assert "update" in result["notification"][0].keys(), (
-        "Expected 'update' key in the result, probably requested value is not present"
+        "Expected 'update' key in the result, probably requested value is not present on the device."
     )
     return result["notification"][0]["update"][0]["val"]
 
