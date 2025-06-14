@@ -11,8 +11,8 @@ def gnmi_client(device):
     sr_username = os.getenv("SR_USERNAME")
     sr_password = os.getenv("SR_PASSWORD")
 
-    assert sr_username, "Environment variable SR_USERNAME is not set"
-    assert sr_password, "Environment variable SR_PASSWORD is not set"
+    if not sr_username or not sr_password:
+        pytest.skip("Credentials are absent, skipping gNMI client tests")
     assert device, "Device hostname was not provided"
 
     try:
