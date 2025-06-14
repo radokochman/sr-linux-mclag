@@ -13,6 +13,7 @@ def gnmi_client(device):
 
     assert sr_username, "Environment variable SR_USERNAME is not set"
     assert sr_password, "Environment variable SR_PASSWORD is not set"
+    assert device, "Device hostname was not provided"
 
     try:
         with gNMIclient(
