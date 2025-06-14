@@ -18,12 +18,12 @@ def test_bgp_neighbor_state(gnmi_client, device, bgp_neighbors):
         )
         assert neighbor_data["peer-type"] == neighbor.peer_type.value, (
             f'Expected BGP neighbor peer type to be "{neighbor.peer_type.value}", got ',
-            f'"{neighbor_data["peer-type"]}"',
+            f"{neighbor_data['peer-type']}",
         )
         assert neighbor_data["peer-group"] == neighbor.group, (
             f'Expected BGP neighbor group to be "{neighbor.group}", got "{neighbor_data["group"]}"'
         )
         assert neighbor_data["session-state"] == EXPECTED_BGP_PEER_STATE, (
-            f"Expected BGP neighbor session state to be {EXPECTED_BGP_PEER_STATE}, got ",
-            f'"{neighbor_data["session-state"]}"',
+            f'Expected BGP neighbor session state to be "{EXPECTED_BGP_PEER_STATE}", got ',
+            f"{neighbor_data['session-state']}",
         )
