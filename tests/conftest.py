@@ -23,7 +23,7 @@ def gnmi_client(device):
             insecure=True,
         ) as client:
             yield client
-    except FutureTimeoutError as e:
-        pytest.fail(f"gNMI client connection timed out: {e}")
+    except FutureTimeoutError:
+        pytest.fail("gNMI client connection timed out")
     except gNMIException as e:
         pytest.fail(f"gNMI client connection failed: {e}")
