@@ -1,0 +1,40 @@
+services:
+  gnmic:
+    image: ghcr.io/openconfig/gnmic:0.42.1
+    container_name: gnmic
+    ports:
+      - "9804:9804"
+    volumes:
+      - ./configs/gnmic/gnmic.yaml:/app/gnmic.yaml
+    command: "subscribe --config /app/gnmic.yaml"
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+      - sr-linux-mclag-prometheus:/prometheus
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./configs/grafana/datasource_prometheus.yaml:/etc/grafana/provisioning/datasources/prometheus.yaml
+      - ./configs/grafana/leaf1_dashboard.yaml:/etc/grafana/provisioning/dashboards/leaf1.yaml
+      - ./configs/grafana/leaf1_dashboard.json:/etc/grafana/provisioning/dashboards/leaf1.json
+      - sr-linux-mclag-grafana:/var/lib/grafana
+    restart: unless-stopped
+
+volumes:
+  sr-linux-mclag-prometheus:
+    driver: local
+  sr-linux-mclag-grafana:
+    driver: local
