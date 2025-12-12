@@ -18,11 +18,11 @@ topology:
       startup-config: configs/leaf3.cfg
     spine1:
       kind: nokia_srlinux
-      type: ixrd3
+      type: ixr-d3
       startup-config: configs/spine1.cfg
     spine2:
       kind: nokia_srlinux
-      type: ixrd3
+      type: ixr-d3
       startup-config: configs/spine2.cfg
 
     client1:
@@ -33,17 +33,17 @@ topology:
       startup-config: configs/client2.cfg
 
   links:
-    # leaf to spine links POD1
-    - endpoints: ["leaf1:e1-1", "spine1:e1-1"]
-    - endpoints: ["leaf1:e1-2", "spine2:e1-1"]
-    - endpoints: ["leaf2:e1-1", "spine1:e1-2"]
-    - endpoints: ["leaf2:e1-2", "spine2:e1-2"]
+  # leaf to spine links POD1
+  - endpoints: [ "leaf1:e1-1", "spine1:e1-1" ]
+  - endpoints: [ "leaf1:e1-2", "spine2:e1-1" ]
+  - endpoints: [ "leaf2:e1-1", "spine1:e1-2" ]
+  - endpoints: [ "leaf2:e1-2", "spine2:e1-2" ]
 
-    # leaf to spine links POD2
-    - endpoints: ["leaf3:e1-1", "spine1:e1-3"]
-    - endpoints: ["leaf3:e1-2", "spine2:e1-3"]
+  # leaf to spine links POD2
+  - endpoints: [ "leaf3:e1-1", "spine1:e1-3" ]
+  - endpoints: [ "leaf3:e1-2", "spine2:e1-3" ]
 
-    # client connection links
-    - endpoints: ["client1:e1-1", "leaf1:e1-3"]
-    - endpoints: ["client1:e1-2", "leaf2:e1-3"]
-    - endpoints: ["client2:e1-1", "leaf3:e1-3"]
+  # client connection links
+  - endpoints: [ "client1:e1-1", "leaf1:e1-3" ]
+  - endpoints: [ "client1:e1-2", "leaf2:e1-3" ]
+  - endpoints: [ "client2:e1-1", "leaf3:e1-3" ]
