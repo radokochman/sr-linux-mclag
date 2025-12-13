@@ -1,0 +1,103 @@
+subscriptions:
+  cpu:
+    mode: STREAM
+    stream-mode: SAMPLE
+    encoding: JSON
+    sample-interval: 5s
+    paths:
+    - /platform/control[slot=A]/cpu[index=*]/total/instant
+  memory:
+    mode: STREAM
+    stream-mode: SAMPLE
+    encoding: JSON
+    sample-interval: 5s
+    paths:
+    - /platform/control[slot=A]/memory
+  interfaces:
+    mode: STREAM
+    stream-mode: SAMPLE
+    encoding: JSON
+    sample-interval: 5s
+    paths:
+    - /interface[name=*]
+  bgp:
+    mode: STREAM
+    stream-mode: SAMPLE
+    encoding: JSON
+    sample-interval: 5s
+    paths:
+    - /network-instance[name=*]/protocols/bgp/neighbor[peer-address=*]/afi-safi[afi-safi-name=*]/active-routes
+outputs:
+  prometheus:
+    type: prometheus
+    listen: ":9804"
+
+targets:
+  leaf1:
+    address: clab-sr-linux-mclag-leaf1:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+    - bgp
+  leaf2:
+    address: clab-sr-linux-mclag-leaf2:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+    - bgp
+  leaf3:
+    address: clab-sr-linux-mclag-leaf3:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+    - bgp
+  spine1:
+    address: clab-sr-linux-mclag-spine1:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+    - bgp
+  spine2:
+    address: clab-sr-linux-mclag-spine2:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+    - bgp
+  client1:
+    address: clab-sr-linux-mclag-client1:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
+  client2:
+    address: clab-sr-linux-mclag-client2:57401
+    username: admin
+    password: NokiaSrl1!
+    insecure: true
+    subscriptions:
+    - cpu
+    - memory
+    - interfaces
