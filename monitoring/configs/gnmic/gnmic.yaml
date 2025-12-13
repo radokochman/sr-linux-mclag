@@ -28,7 +28,7 @@ subscriptions:
     paths:
     - /network-instance[name=*]/protocols/bgp/neighbor[peer-address=*]/afi-safi[afi-safi-name=*]/active-routes
 outputs:
-  prometheus_exporter:
+  prometheus:
     type: prometheus
     listen: ":9804"
 
